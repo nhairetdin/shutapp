@@ -3,20 +3,20 @@
   <ion-list>
 
     <ion-item>
-      <ion-label floating>Username</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label floating>Email</ion-label>
+      <ion-input [(ngModel)]="email" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input [(ngModel)]="password" type="password"></ion-input>
     </ion-item>
 
   </ion-list>
 
-  <button ion-button full color="primary" (click)="moveToChatPage()">Log-in</button>
+  <button ion-button full color="primary" (click)="signIn()">Log-in</button>
 
   <p style="text-align: center;">Or register:</p>
   <button ion-button full color="primary" (click)=openRegisterPage()>Create account</button>
-
+  <p>{{ msg }}</p>
 </ion-content>

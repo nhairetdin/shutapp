@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { DataserviceProvider } from '../../providers/dataservice/dataservice';
+
 @IonicPage()
 @Component({
   selector: 'page-setname',
   templateUrl: 'setname.html',
 })
 export class SetnamePage {
+  email: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public userdata: DataserviceProvider, public navCtrl: NavController, public navParams: NavParams) {
+    this.email = this.userdata.fireauth.auth.currentUser.email;
   }
 
   ionViewDidLoad() {
