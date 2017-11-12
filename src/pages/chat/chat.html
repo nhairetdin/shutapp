@@ -1,12 +1,25 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>chat</ion-title>
+
+    <ion-buttons start>
+      <button ion-button (click)="openSettingsPage()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>{{ room }}</ion-title>
+
+    <ion-buttons end>
+      <button ion-button menuToggle end>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
-
+  chat text..
 </ion-content>

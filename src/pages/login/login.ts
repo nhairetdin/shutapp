@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -8,7 +8,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private app: App, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   openRegisterPage() {
@@ -16,6 +16,7 @@ export class LoginPage {
   }
 
   moveToChatPage() {
-    this.navCtrl.setRoot('ChatPage');
+    this.app.getRootNav().setRoot('SetnamePage');
+    // this.navCtrl.setRoot('ChatPage');
   }
 }

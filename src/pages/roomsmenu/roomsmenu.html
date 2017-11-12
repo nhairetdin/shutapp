@@ -1,0 +1,24 @@
+<ion-content padding>
+
+  <ion-menu persistent="true" [content]="content">
+
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Select room</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <button menuClose ion-item (click)="setRoom('Room 1')">Room 1</button>
+        <button menuClose ion-item (click)="setRoom('Room 2')">Room 2</button>
+        <button menuClose ion-item (click)="setRoom('Room 3')">Room 3</button>
+        <button menuClose ion-item (click)="setRoom('Room 4')">Room 4</button>
+        <button menuClose ion-item (click)="setRoom('Room 5')">Room 5</button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-nav [root]="rootPage" #content></ion-nav>
+
+</ion-content>
