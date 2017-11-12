@@ -7,13 +7,27 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { DataserviceProvider } from '../providers/dataservice/dataservice';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+var config = {
+    apiKey: "AIzaSyDdVtElAUTf0uUAXtzpEMTTvGUZ-aLB8a8",
+    authDomain: "chatapp-c3701.firebaseapp.com",
+    databaseURL: "https://chatapp-c3701.firebaseio.com",
+    projectId: "chatapp-c3701",
+    storageBucket: "chatapp-c3701.appspot.com",
+    messagingSenderId: "793086936188"
+};
+
 @NgModule({
   declarations: [
     MyApp
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(config),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
