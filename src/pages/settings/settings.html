@@ -18,7 +18,7 @@
 <ion-content padding>
   <ion-item>
     <ion-label floating>Nickname:</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" [(ngModel)]="displayName"></ion-input>
   </ion-item>
-  <button ion-button color="primary">Set name</button>
+  <button ion-button color="primary" (click)="setDisplayName()">Set name</button>
 </ion-content>

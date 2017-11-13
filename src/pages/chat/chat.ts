@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, MenuController, Events} from 'ioni
 
 import { DataserviceProvider } from '../../providers/dataservice/dataservice';
 
+import { FirebaseListObservable } from 'angularfire2/database-deprecated';
+
 @IonicPage()
 @Component({
   selector: 'page-chat',
@@ -10,9 +12,16 @@ import { DataserviceProvider } from '../../providers/dataservice/dataservice';
 })
 export class ChatPage {
   room: string;
+  userInput: string;
+  messages;
+  messagesArr: object[] = [];
 
   constructor(public event: Events, public data: DataserviceProvider, public menu: MenuController, public navCtrl: NavController, public navParams: NavParams) {
     this.room = data.room;
+    this.messages = this.data.db.list('/messages').subscribe(data => {
+      this.messagesArr = data;
+    });
+
     event.subscribe('roomChange', (num) => {
       console.log(num);
       this.room = this.data.room;
@@ -27,4 +36,7 @@ export class ChatPage {
     console.log('ionViewDidLoad ChatPage');
   }
 
+  sendMsg() {
+    this.data.writeMessage(this.userInput);
+  }
 }

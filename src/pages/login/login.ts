@@ -14,6 +14,8 @@ export class LoginPage {
   msg: string;
 
   constructor(public userdata: DataserviceProvider, private app: App, public navCtrl: NavController, public navParams: NavParams) {
+    this.email = 'test@test.fi';
+    this.password = 'password';
   }
 
   openRegisterPage() {

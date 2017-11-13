@@ -10,9 +10,22 @@ import { DataserviceProvider } from '../../providers/dataservice/dataservice';
 })
 export class SetnamePage {
   email: string;
+  displayName: string;
 
   constructor(public userdata: DataserviceProvider, public navCtrl: NavController, public navParams: NavParams) {
     this.email = this.userdata.fireauth.auth.currentUser.email;
+  }
+
+  setDisplayName() {
+    if(this.displayName != null && this.displayName !== '') {
+      this.userdata.fireauth.auth.currentUser.updateProfile({
+        displayName: this.displayName,
+        photoURL: ''
+      });
+      return true;
+    } else {
+      return false;
+    }
   }
 
   ionViewDidLoad() {
@@ -20,6 +33,8 @@ export class SetnamePage {
   }
 
   openChatPage() {
-    this.navCtrl.setRoot('RoomsmenuPage');
+    if(this.setDisplayName()) {
+      this.navCtrl.setRoot('RoomsmenuPage');
+    }
   }
 }

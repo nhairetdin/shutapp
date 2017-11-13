@@ -9,6 +9,7 @@ import { DataserviceProvider } from '../providers/dataservice/dataservice';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 
 var config = {
     apiKey: "AIzaSyDdVtElAUTf0uUAXtzpEMTTvGUZ-aLB8a8",
@@ -27,7 +28,8 @@ var config = {
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(config),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
