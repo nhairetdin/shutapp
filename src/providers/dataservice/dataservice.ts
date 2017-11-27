@@ -9,9 +9,11 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 export class DataserviceProvider {
   accountCreatedStatus: number;
   room: string;
+  roomsAsObject: object[] = [];
 
   constructor(public fireauth: AngularFireAuth, public db: AngularFireDatabase) {
-
+    this.setRoom('Second room');
+    this.getRooms();
   }
 
   setRoom(room: string) {
@@ -23,9 +25,27 @@ export class DataserviceProvider {
   }
 
   writeMessage(userInput: string) {
-    this.db.list('/messages').push({
+    this.db.list(`/${this.room}/messages`).push({
       username: this.fireauth.auth.currentUser.displayName,
       message: userInput
     });
+  }
+
+  createRoom(roomName: string) {
+    this.db.list('/rooms').push({
+      name: roomName
+    });
+  }
+
+  getRooms() {
+    this.db.list('/rooms').subscribe(r => {
+      this.roomsAsObject = r;
+    });
+  }
+
+  printRooms() {
+    this.roomsAsObject.forEach(r => {
+      console.log(r);
+    })
   }
 }

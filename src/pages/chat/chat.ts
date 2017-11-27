@@ -18,13 +18,16 @@ export class ChatPage {
 
   constructor(public event: Events, public data: DataserviceProvider, public menu: MenuController, public navCtrl: NavController, public navParams: NavParams) {
     this.room = data.room;
-    this.messages = this.data.db.list('/messages').subscribe(data => {
-      this.messagesArr = data;
-    });
+    // this.data.db.list(`/${this.data.room}/messages`).subscribe(data => {
+    //   this.messagesArr = data;
+    // });
 
     event.subscribe('roomChange', (num) => {
       console.log(num);
       this.room = this.data.room;
+      this.data.db.list(`/${this.data.room}/messages`).subscribe(data => {
+        this.messagesArr = data;
+      });
     });
   }
 

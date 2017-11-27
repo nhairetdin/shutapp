@@ -22,4 +22,8 @@ export class RoomsmenuPage {
     this.data.setRoom(room);
     this.event.publish("roomChange", 1);
   }
+
+  printRooms() {
+    this.data.printRooms();
+  }
 }
