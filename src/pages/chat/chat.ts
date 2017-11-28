@@ -18,6 +18,7 @@ export class ChatPage {
 
   constructor(public event: Events, public data: DataserviceProvider, public menu: MenuController, public navCtrl: NavController, public navParams: NavParams) {
     this.room = data.room;
+    this.roomChange();
     // this.data.db.list(`/${this.data.room}/messages`).subscribe(data => {
     //   this.messagesArr = data;
     // });
@@ -25,10 +26,17 @@ export class ChatPage {
     event.subscribe('roomChange', (num) => {
       console.log(num);
       this.room = this.data.room;
+      this.roomChange();
       // this.messagesArr = this.data.getMessages();
-      this.data.db.list(`/${this.data.room}/messages`).subscribe(data => {
-        this.messagesArr = data;
-      });
+      // this.data.db.list(`/${this.data.room}/messages`).subscribe(data => {
+      //   this.messagesArr = data;
+      // });
+    });
+  }
+
+  roomChange() {
+    this.data.db.list(`/${this.data.room}/messages`).subscribe(data => {
+      this.messagesArr = data;
     });
   }
 
@@ -42,5 +50,6 @@ export class ChatPage {
 
   sendMsg() {
     this.data.writeMessage(this.userInput);
+    this.userInput = "";
   }
 }

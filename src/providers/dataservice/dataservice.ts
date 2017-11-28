@@ -12,7 +12,6 @@ export class DataserviceProvider {
   roomsAsObject: object[] = [];
 
   constructor(public fireauth: AngularFireAuth, public db: AngularFireDatabase) {
-    this.setRoom('Second room');
     this.getRooms();
   }
 
