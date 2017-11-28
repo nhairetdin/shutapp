@@ -20,14 +20,22 @@ export class DataserviceProvider {
     this.room = room;
   }
 
-  getMessages() {
-
-  }
+  // getMessages() {
+  //   let messages;
+  //   this.db.list(`/${this.room}/messages`).subscribe(data => {
+  //     messages = data;
+  //   });
+  //   return messages;
+  // }
 
   writeMessage(userInput: string) {
+    let d = new Date();
+    let day = d.getDate(), month = d.getMonth() + 1, year = d.getFullYear(), hour = d.getHours(), minute = d.getMinutes();
+
     this.db.list(`/${this.room}/messages`).push({
       username: this.fireauth.auth.currentUser.displayName,
-      message: userInput
+      message: userInput,
+      time: `${day}.${month}.${year} ${hour}:${minute}`
     });
   }
 

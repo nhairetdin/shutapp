@@ -25,6 +25,7 @@ export class ChatPage {
     event.subscribe('roomChange', (num) => {
       console.log(num);
       this.room = this.data.room;
+      // this.messagesArr = this.data.getMessages();
       this.data.db.list(`/${this.data.room}/messages`).subscribe(data => {
         this.messagesArr = data;
       });
