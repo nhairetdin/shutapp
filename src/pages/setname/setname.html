@@ -1,0 +1,17 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Set nickname</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <p>Logged in as {{ email }}</p>
+  <ion-item>
+    <ion-label floating>Nickname:</ion-label>
+    <ion-input type="text" [(ngModel)]="displayName"></ion-input>
+  </ion-item>
+  <button ion-button color="primary" (click)="openChatPage()">Go!</button>
+</ion-content>

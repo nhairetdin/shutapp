@@ -1,0 +1,20 @@
+page-slider {
+ 
+    .swiper-pagination .swiper-pagination-bullet {
+        border-radius: 0;
+        color: #5DD9E9;
+        background-color: #5DD9E9;
+        opacity: 1;
+      }
+    .bg-image {
+        background-image: url('../assets/imgs/tausta.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .icon {
+        color: #5DD9E9;
+    }
+
+}
