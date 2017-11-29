@@ -10,8 +10,10 @@ import { DataserviceProvider } from '../../providers/dataservice/dataservice';
 })
 export class RoomsmenuPage {
   rootPage = "ChatPage";
+  userInput: string;
 
   constructor(public event: Events, public data: DataserviceProvider, public navCtrl: NavController, public navParams: NavParams) {
+    this.setRoom("First room");
   }
 
   ionViewDidLoad() {
@@ -25,5 +27,10 @@ export class RoomsmenuPage {
 
   printRooms() {
     this.data.printRooms();
+  }
+
+  createRoom() {
+    this.data.createRoom(this.userInput);
+    this.userInput = "";
   }
 }

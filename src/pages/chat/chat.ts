@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, Events} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, Events } from 'ionic-angular';
 
 import { DataserviceProvider } from '../../providers/dataservice/dataservice';
 
@@ -18,17 +18,22 @@ export class ChatPage {
 
   constructor(public event: Events, public data: DataserviceProvider, public menu: MenuController, public navCtrl: NavController, public navParams: NavParams) {
     this.room = data.room;
-    // this.data.db.list(`/${this.data.room}/messages`).subscribe(data => {
-    //   this.messagesArr = data;
-    // });
+    this.roomChange();
 
     event.subscribe('roomChange', (num) => {
       console.log(num);
       this.room = this.data.room;
+      this.roomChange();
       // this.messagesArr = this.data.getMessages();
-      this.data.db.list(`/${this.data.room}/messages`).subscribe(data => {
-        this.messagesArr = data;
-      });
+      // this.data.db.list(`/${this.data.room}/messages`).subscribe(data => {
+      //   this.messagesArr = data;
+      // });
+    });
+  }
+
+  roomChange() {
+    this.data.db.list(`/${this.data.room}/messages`).subscribe(data => {
+      this.messagesArr = data;
     });
   }
 
@@ -42,6 +47,6 @@ export class ChatPage {
 
   sendMsg() {
     this.data.writeMessage(this.userInput);
-    this.userInput="";
+    this.userInput = "";
   }
 }

@@ -5,7 +5,7 @@
     <ion-header>
       <ion-toolbar color="dark">
         <ion-title>Select room</ion-title>
-        <button ion-button (click)="printRooms()">test</button>
+        <!-- <button ion-button (click)="printRooms()">test</button> -->
       </ion-toolbar>
     </ion-header>
 
@@ -21,6 +21,23 @@
         </span>
       </ion-list>
     </ion-content>
+
+    <ion-footer>
+      <ion-toolbar>
+        <ion-row>
+          <ion-col col-10>
+            <ion-input type="text" [(ngModel)]="userInput" placeholder="Create a new room"></ion-input>
+          </ion-col>
+
+          <ion-col col-2>
+            <button ion-button (click)="createRoom()">
+               <ion-icon icon-only name="add-circle"></ion-icon>
+             </button>
+          </ion-col>
+        </ion-row>
+      </ion-toolbar>
+    </ion-footer>
+
   </ion-menu>
 
   <ion-nav [root]="rootPage" #content></ion-nav>
